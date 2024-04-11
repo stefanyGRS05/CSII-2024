@@ -1,0 +1,6 @@
+-Crear su cuenta de github
+-Hacer un FORK del repo a su cuenta personal
+-Hacer Sync Fork
+-Clonar Repo en su computador local
+-Crear una carpeta con su nombre bajo Tarea1
+-Crear un Console App de "HelloWorld"
