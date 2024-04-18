@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Comments</name>
+    </assembly>
+    <members>
+        <member name="M:Comments.Program.Main(System.String[])">
+            XML Comments are used to help provide documentation
+            They start with triple-slashes and have a special syntax
+            documentation: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/xmldoc/recommended-tags <summary>
+            XML Comments are used to help provide documentation    
+            </summary>
+            <param name="args">Ejemplo de arguments</param>
+            <returns>Este es un ejemplo de un comentario XML</returns>
+        </member>
+    </members>
+</doc>
