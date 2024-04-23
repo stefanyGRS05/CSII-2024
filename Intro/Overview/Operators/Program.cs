@@ -18,35 +18,42 @@ namespace Operators
 
             // // TODO: ++ / -- operadores abreviados
             // Console.WriteLine("----- Shorthand -----");
-            // x++;
-            // y--;
-            // Console.WriteLine(x);
-            // Console.WriteLine(y);
+            //x++;
+            //y--;
+            //Console.WriteLine(x);
+            //Console.WriteLine(y);
 
 
             // // TODO: Operaciones que pueden ser abreviadas: a = a + b
-            // a += b;
-            // Console.WriteLine(a);
+            //a += b;
+            //Console.WriteLine(a);
+
+            //x += y;
+            //Console.WriteLine(x);
 
 
-            // TODO: Operadores Logicos &&, ||
+            // TODO: Operadores Logicos && (and), || (or)
             // Console.WriteLine("----- Logic Operators -----");
-            // Console.WriteLine(x > y && y >= 10);
-            // Console.WriteLine(x > y || y >= 5);
+            //Console.WriteLine(x > y && y >= 10);
+            //Console.WriteLine(x > y || y >= 500);
 
 
             // TODO: Operadores con null
-            // string str = null;
+            string str = "string original";
 
             // TODO: el ?? operador
-            // Console.WriteLine(str ?? "Unknown string");
+            //Console.WriteLine(str ?? "Unknown string");
 
 
             // TODO: el ??= operador asigna el lado izquiero con el derecho si su valor es null
             // funciona como reemplazo:
-            // if (variable is null) {
+            //if (variable is null)
+            //{
             //    variable = somevalue;
-            // }
+            //}
+
+            str ??= "New string";
+            Console.WriteLine(str);
 
         }
     }
