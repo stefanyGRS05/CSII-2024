@@ -1,0 +1,14 @@
+C:\Users\Nishe\OneDrive\Desktop\evs\bin\Debug\net8.0\evs.exe
+C:\Users\Nishe\OneDrive\Desktop\evs\bin\Debug\net8.0\evs.deps.json
+C:\Users\Nishe\OneDrive\Desktop\evs\bin\Debug\net8.0\evs.runtimeconfig.json
+C:\Users\Nishe\OneDrive\Desktop\evs\bin\Debug\net8.0\evs.dll
+C:\Users\Nishe\OneDrive\Desktop\evs\bin\Debug\net8.0\evs.pdb
+C:\Users\Nishe\OneDrive\Desktop\evs\obj\Debug\net8.0\evs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nishe\OneDrive\Desktop\evs\obj\Debug\net8.0\evs.AssemblyInfoInputs.cache
+C:\Users\Nishe\OneDrive\Desktop\evs\obj\Debug\net8.0\evs.AssemblyInfo.cs
+C:\Users\Nishe\OneDrive\Desktop\evs\obj\Debug\net8.0\evs.csproj.CoreCompileInputs.cache
+C:\Users\Nishe\OneDrive\Desktop\evs\obj\Debug\net8.0\evs.dll
+C:\Users\Nishe\OneDrive\Desktop\evs\obj\Debug\net8.0\refint\evs.dll
+C:\Users\Nishe\OneDrive\Desktop\evs\obj\Debug\net8.0\evs.pdb
+C:\Users\Nishe\OneDrive\Desktop\evs\obj\Debug\net8.0\evs.genruntimeconfig.cache
+C:\Users\Nishe\OneDrive\Desktop\evs\obj\Debug\net8.0\ref\evs.dll
