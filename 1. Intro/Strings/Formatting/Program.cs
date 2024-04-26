@@ -14,7 +14,7 @@ namespace Formatting
             decimal val2 = 1234.5678m;
 
             // Formatting Basico
-            // Console.WriteLine("{0}", str1);
+            Console.WriteLine("{0},{1}", str1, val1);
 
             // TODO: Formatos especificos numericos
             // formato general es {index[,alignment]:[format]}
@@ -22,11 +22,17 @@ namespace Formatting
             // E (Exponential), D (Decimal), P (Percent), X (Hexadecimal),
             // C (Currency)
 
+            Console.WriteLine("{0:D}, {0:N}, {0:F}, {0:G}",val1);
+            Console.WriteLine("{0:E}, {0:N}, {0:F}, {0:G}", val2);
+
 
             // TODO: especifica precision numerica
+            Console.WriteLine("{0:D6}, {0:N2}, {0:G3}, {0:F1}", val1);
 
 
             // TODO: Formateando con espacios y alineamiento
+
+            Console.WriteLine("{0,10}, {1,10}, {2,10}, {3,10}", quarters[0], quarters[1], quarters[2], quarters[3]);
 
 
         }

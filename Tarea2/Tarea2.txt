@@ -1,0 +1,18 @@
+Crear una carpeta con su nombre bajo Tarea2
+
+-Crear una rutina que acepte en input del usuario
+-Este input tiene que ser limitado a estar entre el 1 y 10
+- Hacer un print de la tabla de multiplicar de ese numero
+
+
+*Porfavor entrar un numero del 1 al 10: (Console.ReadLine)
+
+5
+
+1 x 5 = 5
+2 x 5 =
+3 x 5 = 
+.
+.
+.
+10 x 5 = 50
