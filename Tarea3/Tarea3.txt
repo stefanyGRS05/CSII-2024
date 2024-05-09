@@ -1,0 +1,11 @@
+Utilizando el StringBuilder
+
+Crear un programa que tome un input STR
+Determinar si una palabra o frase es un 'Palindrome' (que se lee igual alrevez que al derecho)
+Ejemplo: "Radar"
+
+Deben ignorar puntuaciones (IsPunctuation)
+Ignorar espacios en blanco (isWhiteSpace)
+
+Input: console readline
+Output: True/False
