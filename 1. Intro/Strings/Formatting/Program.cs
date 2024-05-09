@@ -7,7 +7,7 @@ namespace Formatting
         static void Main(string[] args)
         {
             int[] quarters = { 1, 2, 3, 4 };
-            int[] sales = { 100000, 150000, 200000, 225000 };
+            int[] sales = { 1000, 1500, 2000, 2250 };
             double[] intlMixPct = { .386, .413, .421, .457 };
             string str1 = "TestStr";
             int val1 = 1234;
@@ -15,8 +15,6 @@ namespace Formatting
 
             // Formatting Basico
             Console.WriteLine("{0},{1}", str1, val1);
-
-            // TODO: Formatos especificos numericos
             // formato general es {index[,alignment]:[format]}
             // N (Number), G (General), F (Fixed-point), 
             // E (Exponential), D (Decimal), P (Percent), X (Hexadecimal),
@@ -33,6 +31,8 @@ namespace Formatting
             // TODO: Formateando con espacios y alineamiento
 
             Console.WriteLine("{0,10}, {1,10}, {2,10}, {3,10}", quarters[0], quarters[1], quarters[2], quarters[3]);
+            Console.WriteLine("{0,10:C2}, {1,10:C2}, {2,10:C2}, {3,10:C1}", sales[0], sales[1], sales[2], sales[3]);
+            Console.WriteLine("{0,10:P1}, {1,10:P1}, {2,10:P2}, {3,10:P2}", intlMixPct[0], intlMixPct[1], intlMixPct[2], intlMixPct[3]);
 
 
         }
