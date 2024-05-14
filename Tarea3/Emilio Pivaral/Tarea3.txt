@@ -1,0 +1,55 @@
+// Importamos las librerías necesarias para el programa.
+using System;
+using System.Text;
+using System.Linq;
+
+// Definimos la clase 'Program' que contiene nuestro método principal.
+class Program
+{
+    // 'Main' es el punto de entrada de nuestro programa.
+    static void Main()
+    {
+        // Solicitamos al usuario que ingrese una palabra o frase.
+        Console.WriteLine("Ingrese una palabra o frase: ");
+        // Leemos la línea del input del usuario y la almacenamos en la variable 'input'.
+        string input = Console.ReadLine();
+
+        // Llamamos al método 'EsPalindromo' y pasamos el input del usuario como argumento.
+        if (EsPalindromo(input))
+        {
+            // Si el resultado es verdadero, imprimimos 'True'.
+            Console.WriteLine("True");
+        }
+        else
+        {
+            // Si el resultado es falso, imprimimos 'False'.
+            Console.WriteLine("False");
+        }
+    }
+
+    // Definimos el método 'EsPalindromo' que determina si una cadena es un palíndromo.
+    static bool EsPalindromo(string str)
+    {
+        // Creamos una instancia de 'StringBuilder' para construir la cadena sin puntuación ni espacios.
+        StringBuilder sb = new StringBuilder();
+
+        // Iteramos sobre cada carácter de la cadena 'str'.
+        foreach (char c in str)
+        {
+            // Verificamos si el carácter no es puntuación ni espacio en blanco.
+            if (!char.IsPunctuation(c) && !char.IsWhiteSpace(c))
+            {
+                // Si no lo es, lo agregamos al 'StringBuilder'.
+                sb.Append(c);
+            }
+        }
+
+        // Convertimos el 'StringBuilder' a una cadena y la pasamos a minúsculas.
+        string forward = sb.ToString().ToLower();
+        // Invertimos la cadena y la almacenamos en la variable 'reverse'.
+        string reverse = new string(forward.Reverse().ToArray());
+
+        // Comparamos la cadena original con la invertida para determinar si son iguales.
+        return forward == reverse;
+    }
+}
