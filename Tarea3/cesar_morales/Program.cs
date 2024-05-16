@@ -24,11 +24,26 @@ namespace Palindrome
 
             userText = Console.ReadLine()!;
 
-            sb.Append(userText);
-            sb.Replace(" ", "");
-            sb.Replace(".", "");
-            Boolean palindrome = Palindrome(sb.ToString());
-            Console.WriteLine($"La palabra es Palindrome: {palindrome}");
+
+
+            foreach (char ch in userText)
+            {
+                if (!char.IsWhiteSpace(ch) && !char.IsPunctuation(ch)){
+                    sb.Append(ch);
+                }
+            }
+
+            //sb.Append(userText);
+            //sb.Replace(" ", "");
+            //sb.Replace(".", "");
+            if(sb.ToString() != "")
+            {
+                Boolean palindrome = Palindrome(sb.ToString());
+                Console.WriteLine($"La palabra es Palindrome: {palindrome}");
+            }
+            else{
+                Console.WriteLine("ERROR: DEBE INGRESAR UNA PALABRA O FRASE.");
+            }
 
         }
     }
