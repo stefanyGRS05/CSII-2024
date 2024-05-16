@@ -3,13 +3,13 @@ using System;
 namespace Inheritance
 {
     // TODO: Declarar "Book" como subclass de Publication
-    class Book {
+    class Book : Publication
+    {
         private string _author;
-        private int _pagecount;
-        private decimal _price;
 
-        // base() keyword usada para inicializar el base class
+        // Usar base() keyword para inicializar el base class
         public Book(string name, string author, int pagecount, decimal price)
+            :base(name, pagecount, price)
         {
             _author = author;
         }
@@ -20,7 +20,11 @@ namespace Inheritance
             set => _author = value;
         }
 
-        // TODO: override keyword usada para sobrepasar un base class method
+        // TODO: 'override' keyword usada para sobrepasar un base class method
+        public override string GetPublicationInfo()
+        {
+            return $"Este libro {Name} fue escrito por {_author} y tiene {PageCount} paginas y cuesta {Price:C3}";
+        }
 
 
     }

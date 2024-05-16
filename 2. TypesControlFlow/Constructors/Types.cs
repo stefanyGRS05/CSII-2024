@@ -11,9 +11,7 @@ public interface IPerson
 //classes - reference types
 public class Employee : IPerson
 {
-    // TODO: public Employee class constructor
-    
-
+    // TODO: public Employee class constructor (ctor shortcut)
 
 
     public string LastName { get; set; }
@@ -27,13 +25,10 @@ public class Employee : IPerson
     public TimeOnly ShiftStartTime { get; set; }
 }
 
-// public class Manager : Employee, IPerson
-// {
-//     public Manager(string firstName, string lastName) : base("desconocido", "desconocido")
-//     {
-
-//     }
-// }
+public class Manager : Employee, IPerson
+{
+    public int NumOfReports { get; set; }
+}
 
 public struct Age
 {

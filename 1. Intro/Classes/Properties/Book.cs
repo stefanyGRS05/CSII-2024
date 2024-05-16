@@ -1,4 +1,5 @@
 using System;
+//https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/properties
 
 namespace Properties
 {
@@ -20,11 +21,42 @@ namespace Properties
 
         // TODO: usar Properties para implementar acceso a datos internos
 
+        public string Name
+        {
+            get { 
+                return _name; 
+            }
+            set { 
+                _name = value; 
+            }
+        }
 
-        // TODO: Forma abreviada de escribirlos utilizando el operador => 
+
+        // TODO: Forma abreviada de escribirlos utilizando el operador => (= >)
         // para crear propiedades "expression-bodied" 
 
+        public string Author
+        {
+            get => _author;
+            set => _author = value;
+        }
 
+        public int PageCount
+        {
+            get => _pagecount;
+            set => _pagecount = value;
+        }
 
+        //TODO: crear Computed Property para Description
+
+        public string Description
+        {
+            get => $"{Name} by {Author}, {PageCount}";
+        }
+
+        //Propiedades Autogeneradas (Opcional): no tienen backing fields en el class, sirven como place-holders de Datos
+        public string ISBN { get; set; }
+
+        public decimal Price { get; set; }
     }
 }

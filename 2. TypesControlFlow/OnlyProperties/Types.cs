@@ -84,10 +84,9 @@ public record PremiereCustomer : Customer
     {
         CustomerLevel = level;
     }
-    public byte CustomerLevel { get; init; }
+    public byte CustomerLevel { get; init; } //Esto puede ser Seteado o asignarle un valor luego de ser inicializado
 }
 
-//record structs (C# 10)
 public record struct Order
 {
     public int OrderId { get; set; }

@@ -1,0 +1,11 @@
+Tarea 4
+
+Implementar una jerarquia de clases que representen transacciones basicas que existen en un Banco.
+
+Deben tener un Base class que implemente:
+- Un constructor que acepte PrimerNombre y Apellido del dueño de la cuenta
+- Un Decimal value que guarde el Balance, por defecto 0.0m
+- Balance: Read and Write Properties
+- Funcion 'Deposit': Tiene que aceptar argumentos Decimal only, la cantidad a depositar
+- Funcion 'Retiro': Tiene que aceptar arguementos Decimal only, la cantidad a retirar
+- Devolver el Balance Actual luego de la transaccion

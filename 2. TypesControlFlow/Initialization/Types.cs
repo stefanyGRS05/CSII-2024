@@ -11,10 +11,10 @@ public interface IPerson
 //classes - reference types
 public class Employee : IPerson
 {
-    public Employee()
-    { }
+    //public Employee()
+    //{ }
     public Employee(string firstName, string lastName,
-        int edad, int empId = 0)
+        int empId = 0)
     {
         LastName = lastName;
         FirstName = firstName;

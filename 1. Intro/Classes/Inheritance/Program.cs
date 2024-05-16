@@ -13,10 +13,12 @@ namespace Inheritance
             Console.WriteLine($"{b1.Name}, {b1.Author}");
             Console.WriteLine($"{m1.Name}, {m1.Publisher}");
 
-            // Logica de validacion para prevenir nombres en blanco
+            // Prueba Logica de validacion para prevenir nombres en blanco
+            //b1.Name = "";
 
 
             // Call the override functions
+            Console.WriteLine(b1.GetPublicationInfo());
 
         }
     }
