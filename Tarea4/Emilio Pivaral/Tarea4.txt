@@ -1,0 +1,108 @@
+using System;
+
+namespace Banco
+{
+    // Clase base que representa una cuenta bancaria
+    public class CuentaBancaria
+    {
+        public string PrimerNombre { get; }
+        public string Apellido { get; }
+
+        private decimal balance = 0.0m;
+        public decimal Balance
+        {
+            get { return balance; }
+            private set { balance = value; }
+        }
+
+        public CuentaBancaria(string primerNombre, string apellido)
+        {
+            PrimerNombre = primerNombre;
+            Apellido = apellido;
+        }
+
+        // Método para realizar una transacción
+        public void RealizarTransaccion(Transaccion transaccion)
+        {
+            transaccion.Ejecutar(this);
+        }
+
+        public decimal ObtenerBalanceActual()
+        {
+            return Balance;
+        }
+
+        // Métodos internos para modificar el balance, sólo accesibles por Transaccion
+        internal void AumentarBalance(decimal cantidad)
+        {
+            Balance += cantidad;
+        }
+
+        internal void DisminuirBalance(decimal cantidad)
+        {
+            if (cantidad > Balance)
+            {
+                throw new InvalidOperationException("Fondos insuficientes.");
+            }
+            Balance -= cantidad;
+        }
+    }
+
+    // Clase base abstracta para transacciones
+    public abstract class Transaccion
+    {
+        public decimal Cantidad { get; }
+
+        protected Transaccion(decimal cantidad)
+        {
+            if (cantidad <= 0)
+            {
+                throw new ArgumentException("La cantidad debe ser mayor que cero.");
+            }
+            Cantidad = cantidad;
+        }
+
+        // Método abstracto para ejecutar la transacción
+        public abstract void Ejecutar(CuentaBancaria cuenta);
+    }
+
+    // Clase para depósitos
+    public class Deposito : Transaccion
+    {
+        public Deposito(decimal cantidad) : base(cantidad) { }
+
+        public override void Ejecutar(CuentaBancaria cuenta)
+        {
+            cuenta.AumentarBalance(Cantidad);
+        }
+    }
+
+    // Clase para retiros
+    public class Retiro : Transaccion
+    {
+        public Retiro(decimal cantidad) : base(cantidad) { }
+
+        public override void Ejecutar(CuentaBancaria cuenta)
+        {
+            cuenta.DisminuirBalance(Cantidad);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Crear una instancia de la clase CuentaBancaria
+            CuentaBancaria cuenta = new CuentaBancaria("Juan", "Pérez");
+
+            // Realizar algunas transacciones usando la clase base Transaccion
+            Transaccion deposito = new Deposito(100.0m);
+            cuenta.RealizarTransaccion(deposito);
+            Console.WriteLine("Balance después del depósito: " + cuenta.ObtenerBalanceActual());
+
+            Transaccion retiro = new Retiro(30.0m);
+            cuenta.RealizarTransaccion(retiro);
+            Console.WriteLine("Balance después del retiro: " + cuenta.ObtenerBalanceActual());
+        }
+    }
+}
