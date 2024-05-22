@@ -9,11 +9,10 @@ namespace App
         string _lastName;
         decimal _balance = 0.0m;
 
-        public Base(string firstName, string lastName, decimal balance)
+        public Base(string firstName, string lastName)
         {
             _firstName = firstName;
             _lastName = lastName;
-            _balance = balance;
         }
         public decimal Balance
         {
@@ -23,17 +22,17 @@ namespace App
 
         public string Desc
         {
-            get { return $"{_firstName} {_lastName}, your Balance is: {_balance}"; }
+            get { return $"{_firstName} {_lastName}, your Current Balance is: {_balance}"; }
         }
 
         public decimal Deposit(decimal balance)
         {
-            return balance;
+            return _balance += balance;
         }
 
         public decimal Withdrawal(decimal amountToWithdraw)
         {
-            return amountToWithdraw;
+            return _balance -= amountToWithdraw;
         }
     }
 }
