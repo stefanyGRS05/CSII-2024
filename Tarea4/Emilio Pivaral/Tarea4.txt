@@ -12,7 +12,7 @@ namespace Banco
         public decimal Balance
         {
             get { return balance; }
-            private set { balance = value; }
+            set { balance = value; }
         }
 
         public CuentaBancaria(string primerNombre, string apellido)
@@ -21,39 +21,43 @@ namespace Banco
             Apellido = apellido;
         }
 
-        // Método para realizar una transacción
-        public void RealizarTransaccion(Transaccion transaccion)
+        // Método para depositar una cantidad en la cuenta
+        public void Depositar(decimal cantidad)
         {
-            transaccion.Ejecutar(this);
-        }
-
-        public decimal ObtenerBalanceActual()
-        {
-            return Balance;
-        }
-
-        // Métodos internos para modificar el balance, sólo accesibles por Transaccion
-        internal void AumentarBalance(decimal cantidad)
-        {
+            if (cantidad <= 0)
+            {
+                throw new ArgumentException("La cantidad a depositar debe ser mayor que cero.");
+            }
             Balance += cantidad;
         }
 
-        internal void DisminuirBalance(decimal cantidad)
+        // Método para retirar una cantidad de la cuenta
+        public void Retirar(decimal cantidad)
         {
+            if (cantidad <= 0)
+            {
+                throw new ArgumentException("La cantidad a retirar debe ser mayor que cero.");
+            }
             if (cantidad > Balance)
             {
                 throw new InvalidOperationException("Fondos insuficientes.");
             }
             Balance -= cantidad;
         }
+
+        // Método para obtener el balance actual después de una transacción
+        public decimal ObtenerBalanceActual()
+        {
+            return Balance;
+        }
     }
 
-    // Clase base abstracta para transacciones
-    public abstract class Transaccion
+    // Clase derivada para transacciones específicas (opcional según sea necesario)
+    public class Transaccion
     {
         public decimal Cantidad { get; }
 
-        protected Transaccion(decimal cantidad)
+        public Transaccion(decimal cantidad)
         {
             if (cantidad <= 0)
             {
@@ -62,29 +66,30 @@ namespace Banco
             Cantidad = cantidad;
         }
 
-        // Método abstracto para ejecutar la transacción
-        public abstract void Ejecutar(CuentaBancaria cuenta);
+        // Método para ejecutar la transacción en una cuenta bancaria
+        public virtual void Ejecutar(CuentaBancaria cuenta)
+        {
+            // Implementación genérica o se puede dejar abstracto si se necesita en subclases
+        }
     }
 
-    // Clase para depósitos
     public class Deposito : Transaccion
     {
         public Deposito(decimal cantidad) : base(cantidad) { }
 
         public override void Ejecutar(CuentaBancaria cuenta)
         {
-            cuenta.AumentarBalance(Cantidad);
+            cuenta.Depositar(Cantidad);
         }
     }
 
-    // Clase para retiros
     public class Retiro : Transaccion
     {
         public Retiro(decimal cantidad) : base(cantidad) { }
 
         public override void Ejecutar(CuentaBancaria cuenta)
         {
-            cuenta.DisminuirBalance(Cantidad);
+            cuenta.Retirar(Cantidad);
         }
     }
 
@@ -95,14 +100,21 @@ namespace Banco
             // Crear una instancia de la clase CuentaBancaria
             CuentaBancaria cuenta = new CuentaBancaria("Juan", "Pérez");
 
-            // Realizar algunas transacciones usando la clase base Transaccion
-            Transaccion deposito = new Deposito(100.0m);
-            cuenta.RealizarTransaccion(deposito);
+            // Realizar algunas transacciones
+            cuenta.Depositar(100.0m);
             Console.WriteLine("Balance después del depósito: " + cuenta.ObtenerBalanceActual());
 
-            Transaccion retiro = new Retiro(30.0m);
-            cuenta.RealizarTransaccion(retiro);
+            cuenta.Retirar(30.0m);
             Console.WriteLine("Balance después del retiro: " + cuenta.ObtenerBalanceActual());
+
+            // Utilizando la clase Transaccion y sus derivadas
+            Transaccion deposito = new Deposito(50.0m);
+            deposito.Ejecutar(cuenta);
+            Console.WriteLine("Balance después del segundo depósito: " + cuenta.ObtenerBalanceActual());
+
+            Transaccion retiro = new Retiro(20.0m);
+            retiro.Ejecutar(cuenta);
+            Console.WriteLine("Balance después del segundo retiro: " + cuenta.ObtenerBalanceActual());
         }
     }
 }
