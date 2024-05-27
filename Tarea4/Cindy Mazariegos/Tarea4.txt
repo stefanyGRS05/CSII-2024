@@ -1,0 +1,73 @@
+using System;
+
+namespace Banco
+{
+    // Clase base que representa una cuenta bancaria
+    public class CuentaBancaria
+    {
+        // Propiedades de solo lectura para el nombre y apellido del dueño de la cuenta
+        public string PrimerNombre { get; }
+        public string Apellido { get; }
+
+        // Propiedad para el balance con valor por defecto de 0.0m
+        private decimal balance = 0.0m;
+        public decimal Balance
+        {
+            get { return balance; }
+            set { balance = value; }
+        }
+
+        // Constructor que acepta el primer nombre y el apellido del dueño de la cuenta
+        public CuentaBancaria(string primerNombre, string apellido)
+        {
+            PrimerNombre = primerNombre;
+            Apellido = apellido;
+        }
+
+        // Método para depositar una cantidad en la cuenta
+        public void Depositar(decimal cantidad)
+        {
+            if (cantidad <= 0)
+            {
+                throw new ArgumentException("La cantidad a depositar debe ser mayor que cero.");
+            }
+            Balance += cantidad;
+        }
+
+        // Método para retirar una cantidad de la cuenta
+        public void Retirar(decimal cantidad)
+        {
+            if (cantidad <= 0)
+            {
+                throw new ArgumentException("La cantidad a retirar debe ser mayor que cero.");
+            }
+            if (cantidad > Balance)
+            {
+                throw new InvalidOperationException("Fondos insuficientes.");
+            }
+            Balance -= cantidad;
+        }
+
+        // Método para obtener el balance actual después de una transacción
+        public decimal ObtenerBalanceActual()
+        {
+            return Balance;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Crear una instancia de la clase CuentaBancaria
+            CuentaBancaria cuenta = new CuentaBancaria("Juan", "Pérez");
+
+            // Realizar algunas transacciones
+            cuenta.Depositar(100.0m);
+            Console.WriteLine("Balance después del depósito: " + cuenta.ObtenerBalanceActual());
+
+            cuenta.Retirar(30.0m);
+            Console.WriteLine("Balance después del retiro: " + cuenta.ObtenerBalanceActual());
+        }
+    }
+}

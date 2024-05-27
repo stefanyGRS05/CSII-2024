@@ -1,0 +1,32 @@
+using System;
+using System.Text;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Ingrese una palabra o frase para verificar si es un palíndromo:");
+        string input = Console.ReadLine(); // Leer la entrada del usuario
+
+        bool isPalindrome = IsPalindrome(input); // Verificar si es un palíndromo
+
+        Console.WriteLine($"¿Es un palíndromo? {isPalindrome}");
+    }
+
+    static bool IsPalindrome(string str)
+    {
+        // Limpiar la cadena de puntuaciones y espacios en blanco y convertir a minúsculas
+        StringBuilder cleanStr = new StringBuilder();
+        foreach (char c in str)
+        {
+            if (char.IsLetter(c)) // Solo agregar letras
+            {
+                cleanStr.Append(char.ToLower(c)); // Convertir a minúscula y agregar
+            }
+        }
+
+        // Verificar si la cadena limpia es igual a su reverso
+        string normalizedStr = cleanStr.ToString();
+        return normalizedStr == new string(normalizedStr.Reverse().ToArray());
+    }
+}
